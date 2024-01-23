@@ -11,7 +11,7 @@ j = 1
 
 result = 0
 
-total = nums[i] + nums[j]
+total = nums[0] + nums[1]
 while i <= j < N:
     if total == M:
         result += 1
@@ -27,5 +27,7 @@ while i <= j < N:
     else:
         total -= nums[i]
         i += 1
+        if j < i:
+            j += 1
 
 print(result)
