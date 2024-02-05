@@ -8,19 +8,21 @@ for tc in range(Test_Case):
     arr = sorted(list(map(int, input().split())))
     count = 0
     for i in range(N - 2):
-        l = i
-        r = N - 1
-        while l < r - 1:
-            check = (arr[l] + arr[r])/2
-            if check in arr:
-                count += 1
-                print(arr[l], int(check), arr[r])
-                r -= 1
-
+        for j in range(N-1, i+1, -1):
+            s = i
+            e = j
+            check = (arr[s] + arr[e]) / 2
+            if check - int(check) == 0:
+                while s < (e - 1):
+                    mid = (s + e) // 2
+                    if arr[mid] < check:
+                        s = mid
+                    elif arr[mid] > check:
+                        e = mid
+                    else:
+                        count += 1
+                        break
             else:
-                mid = (l + r) // 2
-                if check < arr[mid]:
-                    break
-                else:
-                    r -= 1
+                continue
+
     print(count)
